@@ -4,6 +4,7 @@
 
 #include "Scene.h"
 #include "AssetManager.h"
+#include "Card.h"
 
 namespace lg
 {
@@ -15,24 +16,27 @@ namespace lg
         _angle(0.0)
     {
         auto openSans = _assets->loadFont("OpenSans-Regular.ttf");
-        _card = _assets->loadTexture("card.png");
 
         _helloWorld = std::make_shared<SDL2pp::Texture>(*_renderer, openSans->RenderText_Solid("Hello World!", SDL_Color{0, 0, 0, 255}));
         _point = std::make_shared<SDL2pp::Point>(10, 10);
+
+        _cards.emplace_back(std::make_shared<Card>(_renderer, _assets));
     }
 
     void Scene::update()
     {
-        _angle += 0.1;
+        for(auto card = _cards.begin(); card != _cards.end(); ++card)
+        {
+            (*card)->update();
+        }
     }
 
     void Scene::render()
     {
-        _card->SetBlendMode(SDL_BLENDMODE_BLEND);
-        _renderer->Copy(*_card, SDL2pp::NullOpt, SDL2pp::Point(100, 100), -10.0, SDL2pp::Point(0, 150));
-        _renderer->Copy(*_card, SDL2pp::NullOpt, SDL2pp::Point(100, 100), 0.0, SDL2pp::Point(0, 150));
-        _renderer->Copy(*_card, SDL2pp::NullOpt, SDL2pp::Point(100, 100), 10.0, SDL2pp::Point(0, 150));
-        //_renderer->Copy(*_helloWorld, SDL2pp::NullOpt, *_point);
+        for(auto card = _cards.begin(); card != _cards.end(); ++card)
+        {
+            (*card)->render();
+        }
     }
 
     SceneEvent Scene::handleEvent(SDL_Event& event)

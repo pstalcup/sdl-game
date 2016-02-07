@@ -31,9 +31,11 @@ namespace lg
     class IScene;
     class Scene;
     class AssetManager;
+    class Card;
 
     typedef std::shared_ptr<Game> GamePtr;
     typedef std::shared_ptr<IScene> IScenePtr;
     typedef std::shared_ptr<AssetManager> AssetManagerPtr;
+    typedef std::shared_ptr<Card> CardPtr;
 
 }

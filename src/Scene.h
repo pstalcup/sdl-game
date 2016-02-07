@@ -37,8 +37,9 @@ namespace lg
         AssetManagerPtr _assets;
 
         SDL2pp::TexturePtr _helloWorld;
-        SDL2pp::TexturePtr _card;
         SDL2pp::PointPtr _point;
+
+        std::vector<CardPtr> _cards;
 
         double _angle;
         int _mouseX;

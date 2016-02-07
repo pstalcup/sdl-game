@@ -13,12 +13,15 @@ namespace lg
     {
     private:
         SDL2pp::RendererPtr _renderer;
+        AssetManagerPtr _assets;
+
+        SDL2pp::TexturePtr _card;
 
         int _x;
         int _y;
         double _angle;
     public:
-        Card(SDL2pp::RendererPtr);
+        Card(SDL2pp::RendererPtr, AssetManagerPtr assets);
         void render();
         void update();
         void select();
