@@ -13,6 +13,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/Game.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/AssetManager.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/doxygen.in" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/libs/libSDL2pp/SDL2pp/AudioSpec.cc" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/libs/libSDL2pp/SDL2pp/Exception.hh" isTestSource="false" />

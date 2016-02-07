@@ -18,6 +18,10 @@ SDL2pp::Texture renderText(SDL2pp::Renderer &renderer, SDL2pp::Font &font, const
     return SDL2pp::Texture(renderer, font.RenderText_Solid(text, SDL_Color{255, 255, 255, 255}));
 }
 
+/**
+ * Test test test
+ * @return exitCode
+ */
 int main()
 {
     try
