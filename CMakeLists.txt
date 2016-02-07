@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.3)
 project(sdl_game)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall")
 
 set(SDL2PP_WITH_IMAGE ON)
 set(SDL2PP_WITH_TTF ON)
