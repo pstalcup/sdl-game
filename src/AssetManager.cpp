@@ -7,8 +7,8 @@
 namespace lg
 {
     AssetManager::AssetManager(SDL2pp::RendererPtr renderer, std::string path)
-        :_renderer(renderer),
-         _resourcePath(path)
+        : _resourcePath(path),
+          _renderer(renderer)
     {
     }
 

@@ -11,22 +11,28 @@ namespace lg
         _renderer(renderer),
         _assets(assets),
         _helloWorld(nullptr),
-        _point(nullptr)
+        _point(nullptr),
+        _angle(0.0)
     {
         auto openSans = _assets->loadFont("OpenSans-Regular.ttf");
+        _card = _assets->loadTexture("card.png");
 
-        _helloWorld = std::make_shared<SDL2pp::Texture>(*_renderer, openSans->RenderText_Solid("Hello World!", SDL_Color{255, 255, 255, 255}));
+        _helloWorld = std::make_shared<SDL2pp::Texture>(*_renderer, openSans->RenderText_Solid("Hello World!", SDL_Color{0, 0, 0, 255}));
         _point = std::make_shared<SDL2pp::Point>(10, 10);
     }
 
     void Scene::update()
     {
-
+        _angle += 0.1;
     }
 
     void Scene::render()
     {
-        _renderer->Copy(*_helloWorld, SDL2pp::NullOpt, *_point);
+        _card->SetBlendMode(SDL_BLENDMODE_BLEND);
+        _renderer->Copy(*_card, SDL2pp::NullOpt, SDL2pp::Point(100, 100), -10.0, SDL2pp::Point(0, 150));
+        _renderer->Copy(*_card, SDL2pp::NullOpt, SDL2pp::Point(100, 100), 0.0, SDL2pp::Point(0, 150));
+        _renderer->Copy(*_card, SDL2pp::NullOpt, SDL2pp::Point(100, 100), 10.0, SDL2pp::Point(0, 150));
+        //_renderer->Copy(*_helloWorld, SDL2pp::NullOpt, *_point);
     }
 
     SceneEvent Scene::handleEvent(SDL_Event& event)
@@ -57,6 +63,11 @@ namespace lg
                     (*_point) += SDL2pp::Point(0, 1);
                     break;
             }
+        }
+        else if (event.type == SDL_MOUSEMOTION)
+        {
+            _mouseX = event.motion.x;
+            _mouseY = event.motion.y;
         }
         return result;
     }

@@ -37,7 +37,12 @@ namespace lg
         AssetManagerPtr _assets;
 
         SDL2pp::TexturePtr _helloWorld;
+        SDL2pp::TexturePtr _card;
         SDL2pp::PointPtr _point;
+
+        double _angle;
+        int _mouseX;
+        int _mouseY;
     public:
         Scene(std::shared_ptr<SDL2pp::Renderer>, std::shared_ptr<AssetManager>);
         void render() override;
