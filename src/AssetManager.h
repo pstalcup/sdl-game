@@ -18,15 +18,16 @@ namespace lg
     {
     private:
         std::string _resourcePath;
-        std::shared_ptr<SDL2pp::Renderer> _renderer;
-        std::map<std::string, std::shared_ptr<SDL2pp::Texture>> _textures;
-        std::map<std::string, std::shared_ptr<SDL2pp::Font>> _fonts;
+        std::map<std::string, std::unique_ptr<SDL2pp::Texture>> _textures;
+        std::map<std::string, std::unique_ptr<SDL2pp::Font>> _fonts;
     public:
-        AssetManager(SDL2pp::RendererPtr renderer, std::string path);
+        // delete this so people don't try to copy it in dumb ways
+        AssetManager(const AssetManager&) = delete;
 
-        std::shared_ptr<SDL2pp::Texture> loadTexture(std::string);
+        AssetManager(std::string path);
 
-        std::shared_ptr<SDL2pp::Font> loadFont(std::string);
+        SDL2pp::Texture* loadTexture(SDL2pp::Renderer& renderer, std::string);
+        SDL2pp::Font* loadFont(std::string);
     };
 }
 

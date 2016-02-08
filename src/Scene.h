@@ -11,7 +11,7 @@
 #include "SDL2pp/SDL2pp.hh"
 
 // local includes
-#include "Pointers.h"
+#include "GameData.h"
 
 namespace lg
 {
@@ -33,19 +33,10 @@ namespace lg
     class Scene : public IScene
     {
     private:
-        SDL2pp::RendererPtr _renderer;
-        AssetManagerPtr _assets;
+        GameData *_data;
 
-        SDL2pp::TexturePtr _helloWorld;
-        SDL2pp::PointPtr _point;
-
-        std::vector<CardPtr> _cards;
-
-        double _angle;
-        int _mouseX;
-        int _mouseY;
     public:
-        Scene(std::shared_ptr<SDL2pp::Renderer>, std::shared_ptr<AssetManager>);
+        Scene(GameData *data);
         void render() override;
         void update() override;
         SceneEvent handleEvent(SDL_Event &event) override;

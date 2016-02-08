@@ -11,22 +11,14 @@
 #include "SDL2pp/SDL2pp.hh"
 
 // local includes
-#include "Pointers.h"
+#include "GameData.h"
 
 namespace lg
 {
     class Game
     {
     private:
-        //SDL constructs
-        SDL2pp::SDLPtr _sdl;
-        SDL2pp::SDLTTFPtr _sdlttf;
-        SDL2pp::WindowPtr _window;
-        SDL2pp::RendererPtr _renderer;
-
-        // Game constructs
-        IScenePtr _scene;
-        AssetManagerPtr _assets;
+        std::unique_ptr<GameData> _data;
     public:
         Game(std::string title);
 

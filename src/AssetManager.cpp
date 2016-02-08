@@ -6,33 +6,34 @@
 
 namespace lg
 {
-    AssetManager::AssetManager(SDL2pp::RendererPtr renderer, std::string path)
-        : _resourcePath(path),
-          _renderer(renderer)
+    AssetManager::AssetManager(std::string path)
+        : _resourcePath(path)
     {
     }
 
-    std::shared_ptr<SDL2pp::Texture> AssetManager::loadTexture(std::string name)
+    SDL2pp::Texture* AssetManager::loadTexture(SDL2pp::Renderer& renderer, std::string name)
     {
         auto found = _textures.find(name);
         if (found == _textures.end())
         {
-            auto actualPath = _resourcePath + name;
+            auto actualPath = _resourcePath.append(name);
 
-            return (_textures[name] = std::make_shared<SDL2pp::Texture>(*_renderer, actualPath));
+            _textures[name] = std::unique_ptr<SDL2pp::Texture>(new SDL2pp::Texture(renderer, actualPath));
+
+            found = _textures.find(name);
         }
-        return found->second;
+        return found->second.get();
     }
 
-    std::shared_ptr<SDL2pp::Font> AssetManager::loadFont(std::string name)
+    SDL2pp::Font* AssetManager::loadFont(std::string name)
     {
         auto found = _fonts.find(name);
         if (found == _fonts.end())
         {
-            auto actualPath = _resourcePath + name;
+            auto actualPath = _resourcePath.append(name);
 
-            return (_fonts[name] = std::make_shared<SDL2pp::Font>(actualPath, 20, 0));
+            _fonts[name] = std::unique_ptr<SDL2pp::Font>(new SDL2pp::Font(actualPath, 20, 0));
         }
-        return found->second;
+        return found->second.get();
     }
 }
