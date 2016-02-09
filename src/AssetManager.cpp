@@ -16,7 +16,7 @@ namespace lg
         auto found = _textures.find(name);
         if (found == _textures.end())
         {
-            auto actualPath = _resourcePath.append(name);
+            auto actualPath = _resourcePath + name;
 
             _textures[name] = std::unique_ptr<SDL2pp::Texture>(new SDL2pp::Texture(renderer, actualPath));
 
@@ -30,9 +30,11 @@ namespace lg
         auto found = _fonts.find(name);
         if (found == _fonts.end())
         {
-            auto actualPath = _resourcePath.append(name);
+            auto actualPath = _resourcePath + name;
 
-            _fonts[name] = std::unique_ptr<SDL2pp::Font>(new SDL2pp::Font(actualPath, 20, 0));
+            _fonts[name] = std::unique_ptr<SDL2pp::Font>(new SDL2pp::Font(actualPath, 16, 0));
+
+            found = _fonts.find(name);
         }
         return found->second.get();
     }

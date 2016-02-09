@@ -5,7 +5,7 @@
 #include "GameData.h"
 
 
-#define RESOURCE_PATH "/home/patrick/ClionProjects/sdl-game"
+#define RESOURCE_PATH "/home/patrick/ClionProjects/sdl-game/res/"
 
 namespace lg
 {
@@ -17,7 +17,6 @@ namespace lg
         _renderer(_window, 1, 0),
         _assets(RESOURCE_PATH)
     {
-
     }
 
     SDL2pp::Renderer& GameData::getRenderer()

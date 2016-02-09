@@ -33,8 +33,21 @@ namespace lg
     class Scene : public IScene
     {
     private:
+        // constants
+        static constexpr int CARD_COUNT = 3;
+
+        // members
         GameData *_data;
 
+        SDL2pp::Texture *_hellool;
+        SDL2pp::Texture *_helloolText;
+        SDL2pp::Font *_font;
+
+        int _mouseX;
+        int _mouseY;
+
+        int _cardIndex;
+        int _cardSteps[CARD_COUNT];
     public:
         Scene(GameData *data);
         void render() override;

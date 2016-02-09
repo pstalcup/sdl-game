@@ -12,6 +12,7 @@
 
 // local includes
 #include "GameData.h"
+#include "Scene.h"
 
 namespace lg
 {
@@ -19,6 +20,7 @@ namespace lg
     {
     private:
         std::unique_ptr<GameData> _data;
+        std::unique_ptr<IScene> _scene;
     public:
         Game(std::string title);
 
