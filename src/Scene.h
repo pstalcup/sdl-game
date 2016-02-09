@@ -26,7 +26,7 @@ namespace lg
     {
     public:
         virtual void render() = 0;
-        virtual void update() = 0;
+        virtual void update(double dt) = 0;
         virtual SceneEvent handleEvent(SDL_Event &event) = 0;
     };
 
@@ -39,19 +39,23 @@ namespace lg
         // members
         GameData *_data;
 
-        SDL2pp::Texture *_hellool;
-        SDL2pp::Texture *_helloolText;
-        SDL2pp::Font *_font;
+        SDL2pp::Texture *_card;
+        SDL2pp::Texture *_cardText;
+        SDL2pp::Texture *_selectedCard;
+
+        std::string _fontName;
 
         int _mouseX;
         int _mouseY;
 
         int _cardIndex;
-        int _cardSteps[CARD_COUNT];
+        int _cardSteps[CARD_COUNT] = {0};
+
+        double _lastUpdate;
     public:
         Scene(GameData *data);
         void render() override;
-        void update() override;
+        void update(double dt) override;
         SceneEvent handleEvent(SDL_Event &event) override;
     };
 

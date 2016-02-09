@@ -20,6 +20,7 @@ namespace lg
         std::string _resourcePath;
         std::map<std::string, std::unique_ptr<SDL2pp::Texture>> _textures;
         std::map<std::string, std::unique_ptr<SDL2pp::Font>> _fonts;
+        std::map<size_t, std::unique_ptr<SDL2pp::Texture>> _fontTextures;
     public:
         // delete this so people don't try to copy it in dumb ways
         AssetManager(const AssetManager&) = delete;
@@ -27,6 +28,7 @@ namespace lg
         AssetManager(std::string path);
 
         SDL2pp::Texture* loadTexture(SDL2pp::Renderer& renderer, std::string);
+        SDL2pp::Texture* loadFontTexture(SDL2pp::Renderer& renderer, std::string, std::string, SDL_Color);
         SDL2pp::Font* loadFont(std::string);
     };
 }

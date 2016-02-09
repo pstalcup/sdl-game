@@ -25,6 +25,29 @@ namespace lg
         return found->second.get();
     }
 
+    SDL2pp::Texture* AssetManager::loadFontTexture(SDL2pp::Renderer& renderer, std::string font, std::string message, SDL_Color color)
+    {
+        // TODO: Doesn't account for color. How do we want to do that? Do I just want to regenerate every time?
+        auto hash = std::hash<std::string>();
+
+        std::string r = std::to_string(color.r);
+        std::string g = std::to_string(color.g);
+        std::string b = std::to_string(color.b);
+        std::string a = std::to_string(color.a);
+
+        size_t result = hash(std::to_string(hash(message)) + r + g + b + a);
+
+        auto found = _fontTextures.find(result);
+        if (found == _fontTextures.end())
+        {
+            _fontTextures[result] = std::unique_ptr<SDL2pp::Texture>(
+                new SDL2pp::Texture(renderer, loadFont(font)->RenderText_Solid(message.c_str(), color)));
+
+            found = _fontTextures.find(result);
+        }
+        return found->second.get();
+    }
+
     SDL2pp::Font* AssetManager::loadFont(std::string name)
     {
         auto found = _fonts.find(name);

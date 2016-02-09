@@ -4,32 +4,63 @@
 
 #include "Scene.h"
 
+#define FONT "OpenSans-Regular.ttf"
+
 namespace lg
 {
     Scene::Scene(GameData *data):
         _data(data),
-        _hellool(nullptr),
-        _helloolText(nullptr),
-        _font(nullptr),
+        _card(nullptr),
+        _cardText(nullptr),
+        _selectedCard(nullptr),
+        _fontName(FONT),
         _mouseX(0),
         _mouseY(0),
-        _cardIndex(0)
+        _cardIndex(-1),
+        _lastUpdate(0.0)
     {
-        _hellool = data->getAssetManager().loadTexture(data->getRenderer(), "card.png");
-        _font = data->getAssetManager().loadFont("OpenSans-Regular.ttf");
-        _helloolText = new SDL2pp::Texture(data->getRenderer(),
-                                           // blapck
-                                           _font->RenderText_Solid("Helool?", {0, 0, 0, 255}));
+
+
+        _card = data->getAssetManager().loadTexture(data->getRenderer(), "card.png");
+        _cardText = data->getAssetManager().loadFontTexture(data->getRenderer(), _fontName, "Test", {0, 0, 0, 255});
     }
 
-    void Scene::update()
+    void Scene::update(double dt)
     {
-        for (int i = 0; i < CARD_COUNT; ++i)
+
+        if (_mouseY > 250)
         {
-            if (_cardIndex == i && _cardSteps[i] < 5)
+            if (_mouseX >= 10 && _mouseX <= 160)
             {
-                _cardSteps[i] += 1;
+                _cardIndex = 0;
             }
+            if (_mouseX >= 120 && _mouseX <= 220)
+            {
+                _cardIndex = 1;
+            }
+            if (_mouseX >= 230 && _mouseX <= 330)
+            {
+                _cardIndex = 2;
+            }
+        }
+
+
+        _lastUpdate += dt;
+        if (_lastUpdate > 0.05)
+        {
+            for (int i = 0; i < CARD_COUNT; ++i)
+            {
+                if (_cardIndex == i && _cardSteps[i] < 5)
+                {
+                    _cardSteps[i] += 1;
+                }
+                else if (_cardIndex != i && _cardSteps[i] > 0)
+                {
+                    _cardSteps[i] -= 1;
+                }
+            }
+
+            _lastUpdate = 0.0;
         }
     }
 
@@ -39,19 +70,25 @@ namespace lg
         SDL2pp::Point cardMotion(0, -5);
 
         // first card
-        SDL2pp::Point card1 = SDL2pp::Point(10, 300); // - cardMotion * _cardSteps[0];
-        _data->getRenderer().Copy(*_hellool, SDL2pp::NullOpt, card1);
-        _data->getRenderer().Copy(*_helloolText, SDL2pp::NullOpt, card1 + offset);
+        SDL2pp::Point card1 = SDL2pp::Point(10, 300) + cardMotion * _cardSteps[0];
+        _data->getRenderer().Copy(*_card, SDL2pp::NullOpt, card1);
+        _data->getRenderer().Copy(*_cardText, SDL2pp::NullOpt, card1 + offset);
 
         // second card
-        SDL2pp::Point card2 = SDL2pp::Point(180, 300) - cardMotion * _cardSteps[1];
-        _data->getRenderer().Copy(*_hellool, SDL2pp::NullOpt, card2);
-        _data->getRenderer().Copy(*_helloolText, SDL2pp::NullOpt, card2 + offset);
+        SDL2pp::Point card2 = SDL2pp::Point(120, 300) + cardMotion * _cardSteps[1];
+        _data->getRenderer().Copy(*_card, SDL2pp::NullOpt, card2);
+        _data->getRenderer().Copy(*_cardText, SDL2pp::NullOpt, card2 + offset);
 
         // third card
-        SDL2pp::Point card3 = SDL2pp::Point(350, 300) - cardMotion * _cardSteps[2];
-        _data->getRenderer().Copy(*_hellool, SDL2pp::NullOpt, card3 - cardMotion * _cardSteps[2]);
-        _data->getRenderer().Copy(*_helloolText, SDL2pp::NullOpt, card3 + offset - cardMotion * _cardSteps[2]);
+        SDL2pp::Point card3 = SDL2pp::Point(230, 300) + cardMotion * _cardSteps[2];
+        _data->getRenderer().Copy(*_card, SDL2pp::NullOpt, card3);
+        _data->getRenderer().Copy(*_cardText, SDL2pp::NullOpt, card3 + offset);
+
+        // Which card?
+        if (_selectedCard != nullptr)
+        {
+            _data->getRenderer().Copy(*_selectedCard, SDL2pp::NullOpt, SDL2pp::Point(10, 10));
+        }
     }
 
     SceneEvent Scene::handleEvent(SDL_Event& event)
@@ -81,7 +118,16 @@ namespace lg
         }
         else if (event.type == SDL_MOUSEBUTTONDOWN)
         {
-            std::cout << (event.button.x - 50) << ", " << (event.button.y - 75) << std::endl;
+            if (_cardIndex >= 0)
+            {
+                _selectedCard = _data->getAssetManager().
+                        loadFontTexture(_data->getRenderer(), _fontName, std::to_string(_cardIndex),
+                                        {255, 255, 255, 255});
+            }
+            else
+            {
+                _selectedCard = nullptr;
+            }
         }
 
         return result;

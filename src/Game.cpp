@@ -14,6 +14,9 @@ namespace lg
 
     void Game::main()
     {
+        Uint32 lastUpdate = SDL_GetTicks();
+        Uint32 thisUpdate = 0;
+
         while (1)
         {
             SDL_Event event;
@@ -30,7 +33,12 @@ namespace lg
                 }
             }
 
-            _scene->update();
+            // calculate time since last frame
+            thisUpdate = SDL_GetTicks();
+            double dt = (thisUpdate - lastUpdate) / 1000.0;
+            lastUpdate = thisUpdate;
+
+            _scene->update(dt);
 
             _data->getRenderer().Clear();
             _scene->render();
