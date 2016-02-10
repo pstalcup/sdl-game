@@ -3,6 +3,6 @@ add_library(src
         Game.cpp Game.h
         AssetManager.cpp AssetManager.h
         Pointers.h
-        GameData.cpp GameData.h)
+        GameData.cpp GameData.h IComponent.h)
 
 target_include_directories(src PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

@@ -8,10 +8,11 @@
       <sourceFolder url="file://$MODULE_DIR$/src/Scene.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Scene.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Game.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/GameData.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Pointers.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/GameData.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/AssetManager.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/GameData.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/IComponent.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/doxygen.in" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />

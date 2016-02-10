@@ -12,6 +12,7 @@
 
 // local includes
 #include "GameData.h"
+#include "IComponent.h"
 
 namespace lg
 {
@@ -22,11 +23,9 @@ namespace lg
         SE_QUIT
     };
 
-    class IScene
+    class IScene : public IComponent
     {
     public:
-        virtual void render() = 0;
-        virtual void update(double dt) = 0;
         virtual SceneEvent handleEvent(SDL_Event &event) = 0;
     };
 

@@ -19,8 +19,6 @@ namespace lg
         _cardIndex(-1),
         _lastUpdate(0.0)
     {
-
-
         _card = data->getAssetManager().loadTexture(data->getRenderer(), "card.png");
         _cardText = data->getAssetManager().loadFontTexture(data->getRenderer(), _fontName, "Test", {0, 0, 0, 255});
     }
