@@ -17,6 +17,9 @@
 namespace lg
 {
 
+    // forward declare
+    class Hand;
+
     enum SceneEvent
     {
         SE_CONTINUE,
@@ -32,14 +35,10 @@ namespace lg
     class Scene : public IScene
     {
     private:
-        // constants
-        static constexpr int CARD_COUNT = 3;
 
         // members
         GameData *_data;
 
-        SDL2pp::Texture *_card;
-        SDL2pp::Texture *_cardText;
         SDL2pp::Texture *_selectedCard;
 
         std::string _fontName;
@@ -48,9 +47,10 @@ namespace lg
         int _mouseY;
 
         int _cardIndex;
-        int _cardSteps[CARD_COUNT] = {0};
 
         double _lastUpdate;
+
+        std::unique_ptr<Hand> _hand;
     public:
         Scene(GameData *data);
         void render() override;
