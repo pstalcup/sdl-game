@@ -2,19 +2,23 @@
 <module type="CPP_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/src/Hand.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/AssetManager.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/CMakeLists.txt" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Hand.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Scene.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Scene.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Game.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/GameData.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Pointers.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Game.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/GameData.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/AssetManager.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/IComponent.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/GameData.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Hand.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/AssetManager.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/GameData.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/render/HPBar.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/render/Hand.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/render/HPBar.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/render/Hand.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Scene.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Game.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Hand.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Pointers.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Game.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/AssetManager.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Scene.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/doxygen.in" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
@@ -33,7 +37,7 @@
       <sourceFolder url="file://$MODULE_DIR$/libs/libSDL2pp/SDL2pp/SDLImage.hh" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/libs/libSDL2pp/SDL2pp/SDLImage.cc" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/libs/libSDL2pp/SDL2pp/Window.hh" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/libs/libSDL2pp/SDL2pp/Exception.cc" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/libs/libSDL2pp/SDL2pp/AudioDevice.hh" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/libs/libSDL2pp/SDL2pp/Config.hh.in" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/libs/libSDL2pp/SDL2pp/AudioDevice.cc" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/libs/libSDL2pp/SDL2pp/RWops.hh" isTestSource="false" />
@@ -50,11 +54,11 @@
       <sourceFolder url="file://$MODULE_DIR$/libs/libSDL2pp/SDL2pp/Wav.cc" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/libs/libSDL2pp/SDL2pp/Font.cc" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/libs/libSDL2pp/SDL2pp/Surface.hh" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/libs/libSDL2pp/SDL2pp/AudioDevice.hh" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/libs/libSDL2pp/SDL2pp/Surface.cc" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/libs/libSDL2pp/SDL2pp/Optional.hh" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/libs/libSDL2pp/SDL2pp/SDLTTF.hh" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/libs/libSDL2pp/SDL2pp/SDLTTF.cc" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/libs/libSDL2pp/SDL2pp/Exception.cc" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/libs/libSDL2pp/SDL2pp/AudioSpec.hh" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/libs/libSDL2pp/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/libs/libSDL2pp/cmake/AppendCXXFlagIfSupported.cmake" isTestSource="false" />

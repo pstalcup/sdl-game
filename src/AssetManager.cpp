@@ -27,7 +27,6 @@ namespace lg
 
     SDL2pp::Texture* AssetManager::loadFontTexture(SDL2pp::Renderer& renderer, std::string font, std::string message, SDL_Color color)
     {
-        // TODO: Doesn't account for color. How do we want to do that? Do I just want to regenerate every time?
         auto hash = std::hash<std::string>();
 
         std::string r = std::to_string(color.r);

@@ -19,6 +19,7 @@ namespace lg
 
     // forward declare
     class Hand;
+    class HPBar;
 
     enum SceneEvent
     {
@@ -40,6 +41,8 @@ namespace lg
         GameData *_data;
 
         SDL2pp::Texture *_selectedCard;
+        SDL2pp::Texture *_bad;
+
 
         std::string _fontName;
 
@@ -51,6 +54,10 @@ namespace lg
         double _lastUpdate;
 
         std::unique_ptr<Hand> _hand;
+        std::unique_ptr<HPBar> _playerBar;
+        std::unique_ptr<HPBar> _enemyBar;
+
+        // helper functions
     public:
         Scene(GameData *data);
         void render() override;

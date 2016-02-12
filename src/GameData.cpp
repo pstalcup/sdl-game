@@ -28,4 +28,9 @@ namespace lg
     {
         return _assets;
     }
+
+    std::string GameData::getFont()
+    {
+        return "OpenSans-Regular.ttf";
+    }
 }

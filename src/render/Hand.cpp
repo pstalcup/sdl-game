@@ -69,7 +69,7 @@ namespace lg
         _cardIndex = -1;
         if (y > 250)
         {
-            if (x >= 10 && x <= 160)
+            if (x >= 10 && x <= 110)
             {
                 _cardIndex = 0;
             }

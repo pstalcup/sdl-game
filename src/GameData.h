@@ -26,6 +26,8 @@ namespace lg
 
         SDL2pp::Renderer& getRenderer();
         AssetManager& getAssetManager();
+
+        std::string getFont();
     };
 
 }
